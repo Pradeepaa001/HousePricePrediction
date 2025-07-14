@@ -1,13 +1,11 @@
 [build-system]
-requires = ["setuptools>=61", "wheel"]
+requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "housepricepredictor"
 version = "0.1.0"
-description = "House price prediction Flask app"
-requires-python = "==3.10.14"
-
+requires-python = ">=3.10"
 dependencies = [
     "numpy==1.26.4",
     "pandas==2.3.0",
@@ -18,3 +16,8 @@ dependencies = [
     "lightgbm==4.6.0",
     "joblib==1.5.1"
 ]
+
+[tool.setuptools]
+packages = []
+[tool.setuptools.package-data]
+"" = ["data/*", "model/*"]
