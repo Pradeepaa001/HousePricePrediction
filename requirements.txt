@@ -1,9 +1,0 @@
-python==3.10.14
-numpy==1.26.4
-pandas==2.3.0
-Flask==3.1.1
-flask-cors==6.0.1
-scikit-learn==1.2.2
-tensorflow==2.19.0
-lightgbm==4.6.0
-joblib==1.5.1
