@@ -5,11 +5,14 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "housepricepredictor"
 version = "0.1.0"
-requires-python = ">=3.10"
+
+# Restrict Python version to avoid using 4.x
+requires-python = ">=3.10,<4.0"
+
 dependencies = [
     "numpy==1.26.4",
     "pandas==2.3.0",
-    "Flask==3.1.1",
+    "Flask==2.3.3",         # downgraded from 3.1.1
     "flask-cors==6.0.1",
     "scikit-learn==1.2.2",
     "tensorflow==2.19.0",
@@ -19,5 +22,6 @@ dependencies = [
 
 [tool.setuptools]
 packages = []
+
 [tool.setuptools.package-data]
 "" = ["data/*", "model/*"]
