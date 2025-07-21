@@ -319,25 +319,25 @@ def run_pipeline(df):
     evaluate_model(y_test, y_pred_meta, label="Meta Ensemble")
 
     # Save random forest
-    joblib.dump(rf, "model/rf_model.pkl")
+    joblib.dump(rf, "model/rf_model.pkl", compress=3)
     # Save scaler
-    joblib.dump(scaler, "model/scaler.pkl")
+    joblib.dump(scaler, "model/scaler.pkl",  compress=3)
     # Save TF-IDF vectorizer
-    joblib.dump(tfidf_vectorizer, "model/tfidf.pkl")
+    joblib.dump(tfidf_vectorizer, "model/tfidf.pkl", compress=3)
     # Save OHE encoder
-    joblib.dump(ohe, "model/ohe_encoder.pkl")
+    joblib.dump(ohe, "model/ohe_encoder.pkl", compress=3)
     # Save DNN separately
-    dnn.save("model/dnn_model.keras")
+    dnn.save("model/dnn_model.keras", include_optimizer=False)
     # Save lgb model
-    joblib.dump(lgb_model, "model/lgb_model.pkl")
+    joblib.dump(lgb_model, "model/lgb_model.pkl", compress=3)
     # Save stacking model
-    joblib.dump(stack, "model/stack_model.pkl")
+    joblib.dump(stack, "model/stack_model.pkl", compress=3)
     # Save meta ensemble model
-    joblib.dump(meta_ensemble, "model/meta_ensemble.pkl")
+    joblib.dump(meta_ensemble, "model/meta_ensemble.pkl", compress=3)
     # Save area lookup
-    joblib.dump(avg_price_lookup, "model/avg_price_lookup.pkl")
+    joblib.dump(avg_price_lookup, "model/avg_price_lookup.pkl", compress=3)
     # Save feature list
-    joblib.dump(X_train.columns.tolist(), "model/feature_names.pkl")
+    joblib.dump(X_train.columns.tolist(), "model/feature_names.pkl", compress=3)
 
 
 
@@ -450,6 +450,6 @@ def predict_price(new_data, pipeline_dict, model_type='dnn'):
     preds_adjusted_ens = preds * new_data["total_multiplier"].values
     preds_adjusted_adj = preds_adj * new_data["total_multiplier"].values
     return preds_adjusted_dnn, preds_adjusted_lgb, preds_adjusted_rf, preds_adjusted_ens, preds_adjusted_adj
-    
+
 #pipeline_dict = run_pipeline(df)
 
