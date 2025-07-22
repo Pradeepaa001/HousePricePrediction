@@ -6,6 +6,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
@@ -451,5 +453,5 @@ def predict_price(new_data, pipeline_dict, model_type='dnn'):
     preds_adjusted_adj = preds_adj * new_data["total_multiplier"].values
     return preds_adjusted_dnn, preds_adjusted_lgb, preds_adjusted_rf, preds_adjusted_ens, preds_adjusted_adj
 
-#pipeline_dict = run_pipeline(df)
+pipeline_dict = run_pipeline(df)
 
